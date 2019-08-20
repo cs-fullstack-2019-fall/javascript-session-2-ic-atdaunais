@@ -56,7 +56,15 @@ class Ttt_Game_Board_class
     {
         // TODO: Student add extra data validation to make sure a valid board spot entered (0 - 8) and that the spot isn't already taken
         // Accept upper or lower case
-        if (current_player_letter.toUpperCase() === 'X')
+        if (board_position < 0 || board_position > 8){
+            alert("Please enter a valid board position.");
+            return false;
+        }
+        else if (this.game_places_p[board_position] === 'X' || this.game_places_p[board_position] === 'O'){
+            alert("This position is taken.");
+            return false;
+        }
+        else if (current_player_letter.toUpperCase() === 'X')
         {
             console.log(`X has been placed`);
             this.game_places_p[board_position] = 'X';
@@ -83,6 +91,10 @@ class Ttt_Game_Board_class
     // TODO: Student must implement logic that will detect if there was a Winner or a CAT
     check_for_winner(current_player_letter)
     {
+        //Not working yet
+        if (this.game_places_p === [current_player_letter,current_player_letter,current_player_letter,'','','','','','']){
+            alert("Player X Wins!");
+        }
     }
 }
 
